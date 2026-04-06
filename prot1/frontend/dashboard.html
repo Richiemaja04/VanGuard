@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeIQ | Analysis Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Resume<span>IQ</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="builder.html">Analyze Another</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Your ATS Report</h1>
+            <p>We've analyzed your resume against the job description using AI-driven semantic matching.</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card main-score">
+                <h3>Overall ATS Score</h3>
+                <div class="score-ring">
+                    <span id="ats-score">0</span>%
+                </div>
+                <p class="score-label">Composite Match</p>
+            </div>
+            
+            <div class="stat-card">
+                <p>Keyword Match</p>
+                <h2 id="keyword-match-val">0%</h2>
+                <div class="progress-bar"><div class="fc-fill" id="kw-bar" style="width: 0%"></div></div>
+            </div>
+
+            <div class="stat-card">
+                <p>Skill Alignment</p>
+                <h2 id="skill-match-val">0%</h2>
+                <div class="progress-bar"><div class="sc-fill" id="skill-bar" style="width: 0%"></div></div>
+            </div>
+
+            <div class="stat-card">
+                <p>Formatting Check</p>
+                <h2 id="formatting-val">0%</h2>
+                <div class="progress-bar"><div class="fc-fill" id="format-bar" style="width: 0%"></div></div>
+            </div>
+        </section>
+
+        <section class="analytics-row">
+            <div class="chart-container">
+                <h3>Skill Category Breakdown</h3>
+                <canvas id="skillsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Section-wise Strength</h3>
+                <canvas id="sectionsChart"></canvas>
+            </div>
+        </section>
+
+        <section class="feedback-grid">
+            <div class="feedback-card">
+                <h3>Keyword Analysis</h3>
+                <div class="kw-lists">
+                    <div class="kw-group">
+                        <h4 style="color: var(--c-green)">Matched Keywords</h4>
+                        <div id="matched-keywords" class="tag-cloud">
+                            </div>
+                    </div>
+                    <div class="kw-group">
+                        <h4 style="color: var(--c-coral)">Missing Critical Terms</h4>
+                        <div id="missing-keywords" class="tag-cloud red">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-card">
+                <h3>AI Improvement Suggestions</h3>
+                <ul id="improvement-hints" class="hints-list">
+                    </ul>
+            </div>
+        </section>
+
+        <section class="action-bar">
+            <div class="action-info">
+                <h3>Ready to Apply?</h3>
+                <p>Download your AI-optimized resume in your preferred format.</p>
+            </div>
+            <div class="export-group">
+                <button class="btn-primary" id="download-pdf" onclick="handleDownload('pdf')">
+                    Download PDF
+                </button>
+                <button class="btn-primary" id="download-docx" onclick="handleDownload('docx')">
+                    Download DOCX
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="loading-overlay" class="overlay">
+        <div class="loader"></div>
+        <p id="loading-text">Generating final document...</p>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/charts.js"></script>
+    <script>
+        // Integration helper for the download buttons
+        async function handleDownload(format) {
+            const overlay = document.getElementById('loading-overlay');
+            overlay.classList.add('active');
+            
+            try {
+                // In a live environment, this calls the backend which uses utils.html_to_pdf/docx
+                console.log(`Requesting ${format.toUpperCase()} generation...`);
+                await new Promise(r => setTimeout(r, 1500)); // Simulating processing
+                showToast(`Your optimized ${format.toUpperCase()} is ready!`);
+            } catch (err) {
+                showToast("Export failed. Please try again.", "error");
+            } finally {
+                overlay.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
