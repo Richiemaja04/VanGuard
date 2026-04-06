@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NAME}} — Resume</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Arial', sans-serif; color: #1f1f2e; background: #fff; font-size: 11.5px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+
+/* LEFT SIDEBAR */
+.sidebar {
+  background: linear-gradient(170deg, #6C63FF 0%, #4a42c8 100%);
+  padding: 40px 28px; color: #fff;
+}
+.avatar-ring {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin: 0 auto 20px;
+}
+.sidebar .name { font-size: 18px; font-weight: 800; text-align: center; margin-bottom: 4px; letter-spacing: -0.3px; }
+.sidebar .role { font-size: 11px; text-align: center; opacity: 0.75; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 0.1em; }
+.sidebar-section { margin-bottom: 24px; }
+.sidebar-section-title {
+  font-size: 9px; text-transform: uppercase; letter-spacing: 0.18em;
+  opacity: 0.6; margin-bottom: 10px; font-weight: 700;
+  padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.contact-item { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; margin-bottom: 7px; opacity: 0.9; }
+.contact-icon { font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.skill-bar-wrap { margin-bottom: 8px; }
+.skill-bar-label { display: flex; justify-content: space-between; font-size: 10.5px; margin-bottom: 3px; opacity: 0.9; }
+.skill-bar-track { height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: rgba(255,255,255,0.85); border-radius: 2px; }
+
+/* RIGHT MAIN */
+.main-col { padding: 40px 36px; }
+.main-section { margin-bottom: 26px; }
+.main-section-title {
+  font-size: 13px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #6C63FF;
+  padding-bottom: 6px; border-bottom: 2px solid #6C63FF;
+  margin-bottom: 14px;
+}
+.summary-text { font-size: 11.5px; color: #444; line-height: 1.75; }
+
+/* Experience */
+.exp-item { margin-bottom: 16px; }
+.exp-top { display: flex; justify-content: space-between; align-items: baseline; }
+.exp-title { font-size: 12px; font-weight: 700; color: #1f1f2e; }
+.exp-date { font-size: 10px; color: #888; white-space: nowrap; }
+.exp-company { font-size: 11px; color: #6C63FF; font-weight: 500; margin-bottom: 5px; }
+.exp-bullets { list-style: none; }
+.exp-bullets li { position: relative; padding-left: 14px; font-size: 11px; color: #444; margin-bottom: 3px; line-height: 1.55; }
+.exp-bullets li::before { content: "▸"; position: absolute; left: 0; color: #6C63FF; font-size: 10px; }
+
+/* Education */
+.edu-item { margin-bottom: 10px; }
+.edu-degree { font-weight: 700; font-size: 11.5px; color: #1f1f2e; }
+.edu-school { font-size: 11px; color: #555; }
+.edu-year   { font-size: 10px; color: #888; }
+
+/* Tags for certs / projects */
+.tag-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { padding: 3px 10px; background: #f0effe; border: 1px solid #d5d0fb; border-radius: 4px; font-size: 10px; color: #4a46b8; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="avatar-ring">👤</div>
+    <div class="name">{{NAME}}</div>
+    <div class="role">Professional Resume</div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Contact</div>
+      {{#if EMAIL}}
+      <div class="contact-item"><span class="contact-icon">✉</span><span>{{EMAIL}}</span></div>
+      {{/if}}
+      {{#if PHONE}}
+      <div class="contact-item"><span class="contact-icon">☎</span><span>{{PHONE}}</span></div>
+      {{/if}}
+      {{#if LOCATION}}
+      <div class="contact-item"><span class="contact-icon">📍</span><span>{{LOCATION}}</span></div>
+      {{/if}}
+      {{#if LINKEDIN}}
+      <div class="contact-item"><span class="contact-icon">in</span><span>{{LINKEDIN}}</span></div>
+      {{/if}}
+    </div>
+
+    {{#if SKILLS}}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Core Skills</div>
+      <div>{{SKILLS}}</div>
+    </div>
+    {{/if}}
+
+    {{#if EDUCATION}}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Education</div>
+      <div style="font-size:11px;opacity:0.9;line-height:1.6">{{EDUCATION}}</div>
+    </div>
+    {{/if}}
+
+    {{#if CERTIFICATIONS}}
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Certifications</div>
+      <div style="font-size:11px;opacity:0.9;line-height:1.6">{{CERTIFICATIONS}}</div>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    {{#if SUMMARY}}
+    <div class="main-section">
+      <div class="main-section-title">Professional Summary</div>
+      <p class="summary-text">{{SUMMARY}}</p>
+    </div>
+    {{/if}}
+
+    {{#if EXPERIENCE}}
+    <div class="main-section">
+      <div class="main-section-title">Experience</div>
+      <div>{{EXPERIENCE}}</div>
+    </div>
+    {{/if}}
+
+    {{#if PROJECTS}}
+    <div class="main-section">
+      <div class="main-section-title">Projects</div>
+      <p style="font-size:11px;color:#444;line-height:1.7">{{PROJECTS}}</p>
+    </div>
+    {{/if}}
+
+  </div>
+</div>
+</body>
+</html>

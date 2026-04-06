@@ -11,7 +11,7 @@
   --c-border2: rgba(255,255,255,0.12);
   --c-text: #F0F0F6;
   --c-text2: #9395A5;
-  --c-text3: #6264755;
+  --c-text3: #626475;   /* FIX: was #6264755 (7 digits — invalid hex) */
   --c-accent: #6C63FF;
   --c-accent2: #4ECDC4;
   --c-amber: #F5A623;
