@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Resume — ResumeIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/styles.css">
+<link rel="stylesheet" href="/static/css/animations.css">
+</head>
+<body class="page-enter">
+
+<!-- NAV -->
+<nav class="navbar scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Resume<span class="logo-accent">IQ</span></a>
+    <div class="nav-links">
+      <a href="index.html">← Back to home</a>
+      <a href="dashboard.html" class="btn-outline">View Sample Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">
+    <h3>Analyzing your resume with AI</h3>
+    <p>This takes about 15–30 seconds</p>
+  </div>
+  <div class="loading-steps">
+    <div class="ls-item" id="ls-1"><div class="ls-dot"></div> Parsing resume content</div>
+    <div class="ls-item" id="ls-2"><div class="ls-dot"></div> Running keyword analysis</div>
+    <div class="ls-item" id="ls-3"><div class="ls-dot"></div> Computing semantic similarity</div>
+    <div class="ls-item" id="ls-4"><div class="ls-dot"></div> Evaluating ATS formatting</div>
+    <div class="ls-item" id="ls-5"><div class="ls-dot"></div> Generating optimized version</div>
+  </div>
+</div>
+
+<!-- BUILDER -->
+<main class="builder-page">
+  <div class="builder-container">
+    <div class="builder-header">
+      <h1>Optimize Your Resume</h1>
+      <p>Follow the steps below — takes less than 5 minutes.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-steps" id="progress-container"></div>
+
+    <!-- ====== STEP 1: PROFILE ====== -->
+    <div class="step-card active" id="step-1">
+      <h2>Tell us about yourself</h2>
+      <p>We'll tailor template recommendations and AI suggestions to your profile.</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="full-name" placeholder="Alex Johnson" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="alex@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="location" placeholder="San Francisco, CA" />
+        </div>
+        <div class="form-group">
+          <label>Education Level</label>
+          <select id="education">
+            <option value="">Select level...</option>
+            <option>High School Diploma</option>
+            <option>Associate's Degree</option>
+            <option>Bachelor's Degree</option>
+            <option>Master's Degree</option>
+            <option>PhD / Doctorate</option>
+            <option>Bootcamp / Self-taught</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Years of Experience</label>
+          <select id="experience">
+            <option value="">Select level...</option>
+            <option>Entry Level (0–1 years)</option>
+            <option>Junior (1–3 years)</option>
+            <option>Mid-level (3–6 years)</option>
+            <option>Senior (6–10 years)</option>
+            <option>Lead / Staff (10+ years)</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column: 1 / -1">
+          <label>Target Job Role</label>
+          <input type="text" id="job-role" placeholder="e.g. Senior Backend Engineer, Product Manager, Data Scientist..." />
+        </div>
+        <div class="form-group" style="grid-column: 1 / -1">
+          <label>LinkedIn Profile (optional)</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname" />
+        </div>
+      </div>
+
+      <div class="btn-nav">
+        <span></span>
+        <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 2: TEMPLATE ====== -->
+    <div class="step-card" id="step-2">
+      <h2>Choose your template</h2>
+      <p>All templates are ATS-tested and hiring-manager approved. AI recommends based on your role.</p>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:14px 18px;background:rgba(78,205,196,0.08);border:1px solid rgba(78,205,196,0.2);border-radius:12px;">
+        <span style="font-size:18px">🤖</span>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--c-accent2)">AI Recommendation</div>
+          <div style="font-size:13px;color:var(--c-text2)">Based on your role, we recommend the <strong style="color:var(--c-text)">Technical</strong> template for its clean structure and developer-friendly layout.</div>
+        </div>
+      </div>
+
+      <div class="template-grid">
+        <div class="template-card" data-template="classic" onclick="selectTemplate('classic')">
+          <div class="template-preview tp-classic">
+            <div class="tp-line" style="height:8px;width:40%;background:#333"></div>
+            <div class="tp-line" style="margin-top:8px"></div>
+            <div class="tp-line"></div>
+            <div class="tp-line" style="width:50%"></div>
+          </div>
+          <div class="template-name">Classic</div>
+          <div class="template-tag">Professional & Clean</div>
+          <div class="template-badge">ATS Verified</div>
+        </div>
+        <div class="template-card" data-template="modern" onclick="selectTemplate('modern')">
+          <div class="template-preview tp-modern">
+            <div class="tp-line dark" style="height:8px;width:40%"></div>
+            <div class="tp-line dark" style="margin-top:8px"></div>
+            <div class="tp-line dark"></div>
+            <div class="tp-line dark" style="width:50%"></div>
+          </div>
+          <div class="template-name">Modern</div>
+          <div class="template-tag">Bold & Contemporary</div>
+          <div class="template-badge">ATS Verified</div>
+        </div>
+        <div class="template-card selected" data-template="technical" onclick="selectTemplate('technical')">
+          <div class="template-preview tp-technical">
+            <div class="tp-line dark" style="height:8px;width:40%"></div>
+            <div class="tp-line accent" style="margin-top:8px;height:2px"></div>
+            <div class="tp-line dark"></div>
+            <div class="tp-line dark" style="width:50%"></div>
+          </div>
+          <div class="template-name">Technical</div>
+          <div class="template-tag">Developer Focused</div>
+          <div class="template-badge">AI Recommended ✦</div>
+        </div>
+      </div>
+
+      <div class="btn-nav">
+        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+        <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 3: JOB DESCRIPTION ====== -->
+    <div class="step-card" id="step-3">
+      <h2>Paste the job description</h2>
+      <p>The AI uses this as the target. Every optimization will be calibrated to match this role's requirements.</p>
+
+      <div class="form-group" style="margin-bottom:16px">
+        <label>Job Title</label>
+        <input type="text" id="jd-title" placeholder="e.g. Senior Software Engineer at Google" />
+      </div>
+      <div class="form-group" style="margin-bottom:16px">
+        <label>Company Name</label>
+        <input type="text" id="jd-company" placeholder="e.g. Google, Stripe, Figma..." />
+      </div>
+      <div class="form-group" style="margin-bottom:24px">
+        <label>Full Job Description</label>
+        <textarea id="job-desc" style="min-height:240px" placeholder="Paste the complete job description here — requirements, responsibilities, nice-to-haves, everything. The more context you provide, the better the AI optimization."></textarea>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--c-text2);margin-bottom:24px">
+        <span>💡</span>
+        <span>Pro tip: include the full JD including "nice to haves" — the AI will weigh required vs preferred skills appropriately.</span>
+      </div>
+
+      <div class="btn-nav">
+        <button class="btn-back" onclick="goToStep(2)">← Back</button>
+        <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 4: RESUME ====== -->
+    <div class="step-card" id="step-4">
+      <h2>Add your resume</h2>
+      <p>Upload an existing resume or build one from scratch.</p>
+
+      <div class="path-toggle">
+        <div class="path-btn" data-mode="upload" onclick="selectBuildMode('upload')">
+          <div class="path-icon">📤</div>
+          <h3>Upload Resume</h3>
+          <p>PDF or DOCX · We'll extract and analyze your existing content</p>
+        </div>
+        <div class="path-btn" data-mode="scratch" onclick="selectBuildMode('scratch')">
+          <div class="path-icon">✍️</div>
+          <h3>Build from Scratch</h3>
+          <p>Fill in details · AI generates a structured resume for you</p>
+        </div>
+      </div>
+
+      <!-- Upload Section -->
+      <div id="upload-section" style="display:none">
+        <div class="upload-zone" id="upload-zone">
+          <div class="upload-icon">📎</div>
+          <h3>Drop your resume here</h3>
+          <p>Supports PDF and DOCX · Max 10MB</p>
+          <p style="margin-top:8px;font-size:12px;color:var(--c-text2)">or click to browse files</p>
+          <input type="file" id="resume-file" accept=".pdf,.docx" />
+        </div>
+      </div>
+
+      <!-- Scratch Section -->
+      <div id="scratch-section" style="display:none">
+        <div style="background:var(--c-bg3);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:24px;">
+          <h3 style="font-size:16px;margin-bottom:20px;color:var(--c-text2)">Professional Summary</h3>
+          <div class="form-group" style="margin-bottom:20px">
+            <label>Summary / Objective</label>
+            <textarea id="summary" placeholder="Write a 2-3 sentence professional summary highlighting your expertise, key skills, and career goal..." style="min-height:100px"></textarea>
+          </div>
+          <h3 style="font-size:16px;margin-bottom:16px;color:var(--c-text2)">Core Skills</h3>
+          <div class="form-group" style="margin-bottom:20px">
+            <label>Skills (comma-separated)</label>
+            <input type="text" id="skills" placeholder="Python, FastAPI, PostgreSQL, Docker, Machine Learning, REST APIs..." />
+          </div>
+          <h3 style="font-size:16px;margin-bottom:16px;color:var(--c-text2)">Work Experience</h3>
+          <div class="form-group" style="margin-bottom:12px">
+            <label>Most Recent Job Title & Company</label>
+            <input type="text" id="exp1-title" placeholder="e.g. Backend Engineer at Stripe (2021–2024)" />
+          </div>
+          <div class="form-group" style="margin-bottom:20px">
+            <label>Key Responsibilities & Achievements</label>
+            <textarea id="exp1-detail" placeholder="• Built REST APIs serving 2M+ requests/day&#10;• Reduced latency by 35% through query optimization&#10;• Led migration from monolith to microservices architecture" style="min-height:120px"></textarea>
+          </div>
+          <h3 style="font-size:16px;margin-bottom:16px;color:var(--c-text2)">Education</h3>
+          <div class="form-group">
+            <label>Degree, Institution, Year</label>
+            <input type="text" id="education-detail" placeholder="B.S. Computer Science, Stanford University, 2021" />
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-nav">
+        <button class="btn-back" onclick="goToStep(3)">← Back</button>
+        <button class="btn-next" onclick="goToStep(5)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 5: ANALYZE ====== -->
+    <div class="step-card" id="step-5">
+      <h2>Ready to analyze</h2>
+      <p>Review your selections, then let the AI work its magic.</p>
+
+      <div style="background:var(--c-bg3);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;">
+        <h3 style="font-size:14px;color:var(--c-text2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Summary</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:12px;color:var(--c-text2);margin-bottom:4px">Template</div>
+            <div style="font-size:15px;font-weight:500;text-transform:capitalize" id="review-template">technical</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--c-text2);margin-bottom:4px">Mode</div>
+            <div style="font-size:15px;font-weight:500" id="review-mode">—</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--c-text2);margin-bottom:4px">Target Role</div>
+            <div style="font-size:15px;font-weight:500" id="review-role">—</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--c-text2);margin-bottom:4px">Experience</div>
+            <div style="font-size:15px;font-weight:500" id="review-exp">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--c-text2)">
+          <span style="color:var(--c-accent);font-size:16px">✓</span> Keyword & semantic matching analysis
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--c-text2)">
+          <span style="color:var(--c-accent);font-size:16px">✓</span> ATS formatting compliance check
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--c-text2)">
+          <span style="color:var(--c-accent);font-size:16px">✓</span> Experience relevance scoring
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--c-text2)">
+          <span style="color:var(--c-accent);font-size:16px">✓</span> AI-powered content enhancement
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--c-text2)">
+          <span style="color:var(--c-accent);font-size:16px">✓</span> Full analytics dashboard with visualizations
+        </div>
+      </div>
+
+      <div class="btn-nav">
+        <button class="btn-back" onclick="goToStep(4)">← Back</button>
+        <button class="btn-next" onclick="analyzeResume()" style="background:var(--c-green);padding:14px 32px;font-size:16px">
+          🚀 Analyze & Optimize
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /builder-container -->
+</main>
+
+<script src="/static/js/app.js"></script>
+<script>
+// Populate review step
+function updateReview() {
+  const tmpl = document.getElementById('review-template');
+  const mode = document.getElementById('review-mode');
+  const role = document.getElementById('review-role');
+  const exp  = document.getElementById('review-exp');
+  if (tmpl) tmpl.textContent = selectedTemplate || '—';
+  if (mode) mode.textContent = buildMode === 'upload' ? 'Upload Resume' : buildMode === 'scratch' ? 'Build from Scratch' : '—';
+  if (role) { const v = document.getElementById('job-role')?.value; role.textContent = v || '—'; }
+  if (exp)  { const v = document.getElementById('experience')?.value; exp.textContent = v || '—'; }
+}
+
+const origGoToStep = window.goToStep;
+window.goToStep = function(n) {
+  origGoToStep(n);
+  if (n === 5) updateReview();
+};
+</script>
+</body>
+</html>

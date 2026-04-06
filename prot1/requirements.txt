@@ -1,0 +1,34 @@
+# Backend Python dependencies for ResumeIQ
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+aiofiles==23.2.1
+pydantic[email]==2.7.4
+
+# Document parsing
+pdfplumber==0.11.2
+python-docx==1.1.2
+
+# NLP & Semantic Matching
+spacy==3.7.5
+sentence-transformers==3.0.1
+
+# AI APIs
+openai==1.35.0
+# google-generativeai==0.7.2  # Uncomment for Gemini
+
+# PDF Generation
+weasyprint==62.3
+# pdfkit==1.0.0  # Alternative
+
+# DOCX Generation
+htmldocx==0.0.6
+
+# Database
+# (SQLite is built into Python — no extra dep needed)
+
+# ──────────────────────────────────────────────
+# INSTALL COMMANDS
+# ──────────────────────────────────────────────
+# pip install -r requirements.txt
+# python -m spacy download en_core_web_sm

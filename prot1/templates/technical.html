@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NAME}} — Resume</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Courier New', monospace; color: #1a1a2e; background: #fff; font-size: 11px; line-height: 1.5; }
+.page { max-width: 760px; margin: 0 auto; padding: 40px 48px; }
+.header { border-bottom: 2px solid #6C63FF; padding-bottom: 18px; margin-bottom: 24px; }
+.name { font-size: 26px; font-weight: 800; font-family: Arial, sans-serif; letter-spacing: -0.5px; color: #1a1a2e; margin-bottom: 4px; }
+.contact { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; }
+.contact a { color: #6C63FF; text-decoration: none; }
+.accent-bar { height: 3px; background: linear-gradient(90deg, #6C63FF, #4ECDC4); border-radius: 2px; margin: 6px 0 0; }
+.section-title {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+  color: #6C63FF; font-weight: 700; margin-bottom: 10px; margin-top: 20px;
+  border-bottom: 1px solid #e8e8f0; padding-bottom: 4px;
+}
+.summary { font-size: 11px; color: #333; line-height: 1.7; margin-bottom: 4px; }
+.exp-item { margin-bottom: 16px; }
+.exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.exp-title { font-weight: 700; font-size: 12px; color: #1a1a2e; }
+.exp-date { font-size: 10px; color: #888; }
+.exp-company { font-size: 11px; color: #6C63FF; margin-bottom: 4px; }
+.exp-bullets { list-style: none; }
+.exp-bullets li { padding: 1px 0 1px 14px; position: relative; color: #333; font-size: 10.5px; }
+.exp-bullets li::before { content: "›"; position: absolute; left: 0; color: #6C63FF; font-weight: 700; }
+.skills-grid { display: flex; flex-wrap: wrap; gap: 5px; }
+.skill-tag {
+  padding: 3px 10px; background: #f0effe; border: 1px solid #d8d5fb;
+  border-radius: 3px; font-size: 10px; color: #4a46b8; font-weight: 500;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1.5fr; gap: 32px; }
+.edu-item { margin-bottom: 10px; }
+.edu-degree { font-weight: 700; font-size: 11px; color: #1a1a2e; }
+.edu-school { font-size: 10.5px; color: #555; }
+.edu-year { font-size: 10px; color: #888; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="name">{{NAME}}</div>
+    <div class="accent-bar"></div>
+    <div class="contact" style="margin-top:8px">
+      <span>📧 {{EMAIL}}</span>
+      <span>📞 {{PHONE}}</span>
+      <span>📍 {{LOCATION}}</span>
+      <a href="{{LINKEDIN}}">LinkedIn</a>
+      <a href="{{GITHUB}}">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  {{#if SUMMARY}}
+  <div class="section-title">// Professional Summary</div>
+  <p class="summary">{{SUMMARY}}</p>
+  {{/if}}
+
+  <div class="two-col">
+    <!-- Left column -->
+    <div>
+      <!-- Skills -->
+      {{#if SKILLS}}
+      <div class="section-title">// Core Skills</div>
+      <div class="skills-grid">{{SKILLS_TAGS}}</div>
+      {{/if}}
+
+      <!-- Education -->
+      {{#if EDUCATION}}
+      <div class="section-title">// Education</div>
+      <div class="edu-item">{{EDUCATION}}</div>
+      {{/if}}
+
+      <!-- Certifications -->
+      {{#if CERTIFICATIONS}}
+      <div class="section-title">// Certifications</div>
+      <p style="font-size:10.5px;color:#333;line-height:1.7">{{CERTIFICATIONS}}</p>
+      {{/if}}
+    </div>
+
+    <!-- Right column: Experience + Projects -->
+    <div>
+      {{#if EXPERIENCE}}
+      <div class="section-title">// Experience</div>
+      <div>{{EXPERIENCE}}</div>
+      {{/if}}
+
+      {{#if PROJECTS}}
+      <div class="section-title">// Projects</div>
+      <p style="font-size:10.5px;color:#333;line-height:1.7">{{PROJECTS}}</p>
+      {{/if}}
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

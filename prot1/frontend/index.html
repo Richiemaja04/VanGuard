@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResumeIQ — AI-Powered Resume Optimizer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/styles.css">
+<link rel="stylesheet" href="/static/css/animations.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="logo">Resume<span class="logo-accent">IQ</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="/dashboard.html" class="btn-outline">Dashboard</a>
+      <a href="/builder.html" class="btn-primary">Get Started →</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="container">
+    <div class="hero-badge" data-aos="fade-down">
+      <span class="badge-dot"></span> Powered by AI · ATS-Ready
+    </div>
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+      Beat the ATS.<br>Land the Interview.
+    </h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">
+      Upload your resume, paste a job description — our AI analyzes, scores, and rebuilds your resume to pass Applicant Tracking Systems and impress human reviewers.
+    </p>
+    <div class="hero-cta" data-aos="fade-up" data-aos-delay="300">
+      <a href="builder.html" class="btn-hero">Optimize My Resume →</a>
+      <a href="#how-it-works" class="btn-ghost">See how it works</a>
+    </div>
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+      <div class="stat"><span class="stat-num" data-count="94">0</span><span>%</span><p>ATS pass rate</p></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num" data-count="3">0</span><span>x</span><p>More interviews</p></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num" data-count="50000">0</span><span>+</span><p>Resumes optimized</p></div>
+    </div>
+  </div>
+  <!-- Floating cards -->
+  <div class="float-card fc-1" data-aos="fade-left" data-aos-delay="500">
+    <div class="fc-label">ATS Score</div>
+    <div class="fc-score">87<span>%</span></div>
+    <div class="fc-bar"><div class="fc-fill" style="width:87%"></div></div>
+  </div>
+  <div class="float-card fc-2" data-aos="fade-right" data-aos-delay="600">
+    <div class="fc-label">Keywords Matched</div>
+    <div class="fc-keywords">
+      <span class="kw matched">Python</span>
+      <span class="kw matched">FastAPI</span>
+      <span class="kw missing">Docker</span>
+      <span class="kw matched">REST API</span>
+      <span class="kw missing">Kubernetes</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">Features</span>
+      <h2>Everything you need to get hired</h2>
+      <p>From upload to download — AI handles the heavy lifting.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-icon ic-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3>ATS Analytics Dashboard</h3>
+        <p>Visualize your resume's performance with interactive charts — keyword match rate, skill coverage, experience alignment, and formatting compliance.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="feat-icon ic-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3>Semantic Matching Engine</h3>
+        <p>Goes beyond keyword counting — uses sentence transformers and semantic similarity to understand context, synonyms, and related skills.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="feat-icon ic-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Smart Template Selection</h3>
+        <p>Choose from Classic, Modern, or Technical templates — each proven ATS-friendly and recommended based on your role and experience level.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-icon ic-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>AI Content Enhancement</h3>
+        <p>The AI rewrites bullet points, adds quantifiable achievements, and injects missing keywords naturally — without making it sound robotic.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="feat-icon ic-coral">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3>PDF & DOCX Export</h3>
+        <p>Download your polished, optimized resume in PDF or Word format, ready to submit. Pixel-perfect rendering across all platforms.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="feat-icon ic-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        </div>
+        <h3>Build from Scratch</h3>
+        <p>No resume? No problem. Fill in your details and let the AI generate a structured, professional resume tailored to the target job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">Workflow</span>
+      <h2>From resume to hired in 5 steps</h2>
+    </div>
+    <div class="steps-track">
+      <div class="step" data-aos="fade-up" data-aos-delay="0">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Set Your Profile</h3>
+          <p>Tell us your education level, years of experience, and target role. Takes 60 seconds.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step" data-aos="fade-up" data-aos-delay="100">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Pick a Template</h3>
+          <p>Get AI-recommended, ATS-tested templates. Classic, Modern, or Technical.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step" data-aos="fade-up" data-aos-delay="200">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Paste Job Description</h3>
+          <p>The JD becomes the AI's target — every optimization is calibrated to this role.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step" data-aos="fade-up" data-aos-delay="300">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Analyze &amp; Optimize</h3>
+          <p>Upload your resume or build from scratch. Get your ATS score, analytics, and AI-enhanced version.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step" data-aos="fade-up" data-aos-delay="400">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Download &amp; Apply</h3>
+          <p>Download your polished resume as PDF or DOCX. Apply with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATS SCORE FORMULA -->
+<section class="formula-section">
+  <div class="container">
+    <div class="formula-card" data-aos="zoom-in">
+      <div class="formula-label">ATS Scoring Formula</div>
+      <div class="formula-eq">
+        <div class="formula-term"><span class="formula-weight">0.4</span> × Keyword Match</div>
+        <div class="formula-plus">+</div>
+        <div class="formula-term"><span class="formula-weight">0.3</span> × Skill Match</div>
+        <div class="formula-plus">+</div>
+        <div class="formula-term"><span class="formula-weight">0.2</span> × Experience Match</div>
+        <div class="formula-plus">+</div>
+        <div class="formula-term"><span class="formula-weight">0.1</span> × Formatting Score</div>
+        <div class="formula-equals">=</div>
+        <div class="formula-result">ATS Score</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner" data-aos="fade-up">
+      <h2>Your next job starts with a better resume.</h2>
+      <p>Join thousands who've improved their interview rate with ResumeIQ.</p>
+      <a href="builder.html" class="btn-hero">Start Optimizing — It's Free →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="logo">Resume<span class="logo-accent">IQ</span></div>
+    <p>AI-powered resume optimization · ATS analysis · Personalized templates</p>
+  </div>
+</footer>
+
+<script src="/static/js/app.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 60 });</script>
+</body>
+</html>
